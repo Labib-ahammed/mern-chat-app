@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 // importing intarnal package
 import authRoutes from "./routers/auth.route.js";
 import messageRoutes from "./routers/message.route.js";
-import userRoutes from "./routers/user.route.js"
+import userRoutes from "./routers/user.route.js";
 
 // connecting to mongodb
 import { connectToMongoDB } from "../db/connectToMongoDB.js";
@@ -21,7 +21,7 @@ const PORT = process.env.PORT;
 // defining routes
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
-app.use("/api/users", userRoutes)
+app.use("/api/users", userRoutes);
 // starting the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
