@@ -1,5 +1,6 @@
 import Conversation from "../models/conversation.model.js";
 import Message from "../models/message.model.js"
+import { getReceiverSocketId, io } from "../socket/socket.js";
 export const sendMessage = async (req, res) => {
   try {
     const { message } = req.body;
@@ -25,10 +26,17 @@ export const sendMessage = async (req, res) => {
         conversation.messages.push(newMessage._id);
     }
 
-    // SOCKET IO FUNCTIONS
-
     // this will run in parallel means the both collection will save at the same time in the database
     await Promise.all([conversation.save(), newMessage.save()]);
+
+    // SOCKET IO FUNCTIONS
+
+    const receiverSocketId = getReceiverSocketId(receiverId);
+    if(receiverSocketId){
+      // io.to(<socket_id>).emit() used to send events to specific client
+      io.to(receiverSocketId).emit("newMessage", newMessage);
+    }
+
     res.status(200).send(newMessage);
   } catch (error) {
     console.log("error in sendMessage controller", error.message);
