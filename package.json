@@ -1,24 +1,20 @@
 {
   "name": "mern-chat-app",
   "version": "1.0.0",
-  "description": "this is a mern real time chat application",
+  "description": "A MERN real-time chat application",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon backend/server.js",
     "start": "node backend/server.js",
-    "build": "npm install && npm install --prefix frontend && npm run bulid --prefix frontend"
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
   },
   "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Labib-ahammed/mern-chat-app.git"
   },
-  "keywords": [
-    "mern-app",
-    "chat-app",
-    "real-time-chat-app"
-  ],
+  "keywords": ["mern-app", "chat-app", "real-time-chat-app"],
   "author": "Labib-ahammed",
   "license": "ISC",
   "bugs": {
