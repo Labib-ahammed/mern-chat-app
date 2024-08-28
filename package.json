@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon backend/server.js",
-    "bulid": "vite bulid"
+    "start": "node backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run bulid --prefix frontend"
   },
   "type": "module",
   "repository": {
